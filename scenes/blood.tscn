@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkad486fkidji"]
+
+[ext_resource type="Texture2D" uid="uid://cfwx4loop3xh8" path="res://art/small_circle.png" id="1_nnn51"]
+
+[node name="Blood" type="CPUParticles2D"]
+emitting = false
+amount = 60
+lifetime = 1.1
+one_shot = true
+speed_scale = 1.2
+explosiveness = 0.6
+lifetime_randomness = 1.0
+texture = ExtResource("1_nnn51")
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.03
+scale_amount_max = 0.08
+color = Color(0.639216, 0, 0.027451, 1)

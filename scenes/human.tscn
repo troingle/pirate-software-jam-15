@@ -1,0 +1,232 @@
+[gd_scene load_steps=7 format=3 uid="uid://ftjhll8o2w8n"]
+
+[ext_resource type="Script" path="res://code/human.gd" id="1_dwual"]
+[ext_resource type="Texture2D" uid="uid://qihn7ew4hhev" path="res://art/human_constraints.png" id="1_j3sst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5k4q"]
+size = Vector2(39.0909, 85.4545)
+
+[sub_resource type="Animation" id="Animation_sjpum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ShoulderL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.91757]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ShoulderR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.74137]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ShoulderL/Elbow:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.30721]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ShoulderR/Elbow:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.817691]
+}
+
+[sub_resource type="Animation" id="Animation_l3o7n"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ShoulderL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.91757, 2.11182, 1.91812]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ShoulderR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.74137, -1.99379, -1.74184]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ShoulderL/Elbow:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.30721, -1.04113, -1.30721]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ShoulderR/Elbow:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.817691, 0.656415, 0.817691]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bv5pu"]
+_data = {
+"RESET": SubResource("Animation_sjpum"),
+"walk": SubResource("Animation_l3o7n")
+}
+
+[node name="Human" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_dwual")
+
+[node name="Sprites" type="Node2D" parent="."]
+rotation = 1.5708
+scale = Vector2(1.1, 1.1)
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+position = Vector2(0, 5.5)
+texture = ExtResource("1_j3sst")
+region_enabled = true
+region_rect = Rect2(36.82, 3.15843, 52.8785, 30.7558)
+
+[node name="ShoulderL" type="Node2D" parent="Sprites"]
+position = Vector2(-20, 5.5)
+rotation = 1.91757
+
+[node name="ArmL" type="Sprite2D" parent="Sprites/ShoulderL"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+position = Vector2(-8.5, 5)
+texture = ExtResource("1_j3sst")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(9.66134, 27.4394, 28.058, 22.8421)
+
+[node name="Elbow" type="Node2D" parent="Sprites/ShoulderL"]
+position = Vector2(-17.7773, 10.3184)
+rotation = -1.30721
+
+[node name="LowerArmL" type="Sprite2D" parent="Sprites/ShoulderL/Elbow"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+position = Vector2(-6.01405, -7.42167)
+rotation = 0.141407
+texture = ExtResource("1_j3sst")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(95.6338, 2.07927, 26.0795, 26.0795)
+
+[node name="HandThingy" type="Node2D" parent="Sprites/ShoulderL/Elbow"]
+position = Vector2(-13.9497, -19.4384)
+rotation = 0.042863
+
+[node name="HandR" type="Sprite2D" parent="Sprites/ShoulderL/Elbow/HandThingy"]
+self_modulate = Color(0.890196, 0.67451, 0.345098, 1)
+position = Vector2(1.86939, -6.22538)
+rotation = 1.00011
+texture = ExtResource("1_j3sst")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(80.8854, 32.6553, 21.4032, 17.0866)
+
+[node name="ShoulderR" type="Node2D" parent="Sprites"]
+position = Vector2(24.5, 4.5)
+rotation = -1.74137
+
+[node name="ArmR" type="Sprite2D" parent="Sprites/ShoulderR"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+position = Vector2(8, 4)
+texture = ExtResource("1_j3sst")
+region_enabled = true
+region_rect = Rect2(9.78446, 28.4312, 27.89, 21.6922)
+
+[node name="Elbow" type="Node2D" parent="Sprites/ShoulderR"]
+position = Vector2(15, 9.5)
+rotation = 0.817691
+
+[node name="LowerArmR" type="Sprite2D" parent="Sprites/ShoulderR/Elbow"]
+self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+position = Vector2(9.5, -6)
+texture = ExtResource("1_j3sst")
+region_enabled = true
+region_rect = Rect2(94.7345, 3.698, 29.2655, 25.1802)
+
+[node name="HandThingy" type="Node2D" parent="Sprites/ShoulderR/Elbow"]
+position = Vector2(17.5, -17)
+
+[node name="HandL" type="Sprite2D" parent="Sprites/ShoulderR/Elbow/HandThingy"]
+self_modulate = Color(0.890196, 0.67451, 0.345098, 1)
+position = Vector2(6.5, -5.5)
+rotation = -0.123975
+texture = ExtResource("1_j3sst")
+region_enabled = true
+region_rect = Rect2(79.9861, 34.274, 22.1226, 16.3671)
+
+[node name="Head" type="Sprite2D" parent="Sprites"]
+self_modulate = Color(0.890196, 0.67451, 0.345098, 1)
+position = Vector2(0, -3.5)
+rotation = 0.0127108
+texture = ExtResource("1_j3sst")
+region_enabled = true
+region_rect = Rect2(7.75584, 1.74842, 20.098, 23.7572)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -3.33786e-06)
+rotation = 3.14159
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_x5k4q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bv5pu")
+}
+autoplay = "walk"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(60, 0)
+
+[node name="HumanPunchTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="HumanPunchTimer" to="." method="_on_human_punch_timer_timeout"]

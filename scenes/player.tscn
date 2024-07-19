@@ -1,0 +1,370 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcf18ndr1tljt"]
+
+[ext_resource type="Texture2D" uid="uid://qihn7ew4hhev" path="res://art/human_constraints.png" id="1_65lh6"]
+[ext_resource type="Script" path="res://code/player.gd" id="1_rtxvx"]
+[ext_resource type="Texture2D" uid="uid://bq3m53wx223er" path="res://art/cirlce.png" id="3_s7q58"]
+
+[sub_resource type="Animation" id="Animation_yx4vb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ShoulderL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.1315]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ShoulderL/Elbow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.060031]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ShoulderL/Elbow/HandThingy:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.042863]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ShoulderR:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.46933]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ShoulderR/Elbow:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/ShoulderR/Elbow/HandThingy:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.401426]
+}
+
+[sub_resource type="Animation" id="Animation_47fol"]
+resource_name = "punch"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ShoulderL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.1315, 1.15192, 1.13097]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ShoulderL/Elbow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.060031, -0.139626, -0.0593412]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ShoulderL/Elbow/HandThingy:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.042863, -0.0872665, 0.0436332]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ShoulderR:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.523599, 0.0994838, -1.72788, -0.523599]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ShoulderR/Elbow:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.586431, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/ShoulderR/Elbow/HandThingy:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.640154, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pxobr"]
+resource_name = "walk"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/ShoulderL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.1315, 0.788889, 1.13097]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ShoulderL/Elbow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.060031, -0.488521, -0.0593412]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ShoulderL/Elbow/HandThingy:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.042863, -0.513754, 0.0436332]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ShoulderR:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.523599, -1.01229, -0.523599]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ShoulderR/Elbow:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.259324, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/ShoulderR/Elbow/HandThingy:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.640154, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tykk2"]
+_data = {
+"RESET": SubResource("Animation_yx4vb"),
+"punch": SubResource("Animation_47fol"),
+"walk": SubResource("Animation_pxobr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1c4hf"]
+size = Vector2(37.4286, 32)
+
+[node name="Player" type="CharacterBody2D" groups=["players"]]
+top_level = true
+collision_mask = 3
+script = ExtResource("1_rtxvx")
+
+[node name="Sprites" type="Node2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
+position = Vector2(0, 5.5)
+texture = ExtResource("1_65lh6")
+region_enabled = true
+region_rect = Rect2(36.82, 3.15843, 52.8785, 30.7558)
+
+[node name="ShoulderL" type="Node2D" parent="Sprites"]
+position = Vector2(-20, 5.5)
+rotation = 1.1315
+
+[node name="ArmL" type="Sprite2D" parent="Sprites/ShoulderL"]
+self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
+position = Vector2(-8.5, 5)
+texture = ExtResource("1_65lh6")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(9.66134, 27.4394, 28.058, 22.8421)
+
+[node name="Elbow" type="Node2D" parent="Sprites/ShoulderL"]
+position = Vector2(-17.7773, 10.3184)
+rotation = -0.060031
+
+[node name="LowerArmL" type="Sprite2D" parent="Sprites/ShoulderL/Elbow"]
+self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
+position = Vector2(-6.01405, -7.42167)
+rotation = 0.141407
+texture = ExtResource("1_65lh6")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(95.6338, 2.07927, 26.0795, 26.0795)
+
+[node name="HandThingy" type="Node2D" parent="Sprites/ShoulderL/Elbow"]
+position = Vector2(-13.9497, -19.4384)
+rotation = 0.042863
+
+[node name="HandR" type="Sprite2D" parent="Sprites/ShoulderL/Elbow/HandThingy"]
+self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
+position = Vector2(1.86939, -6.22538)
+rotation = 1.00011
+texture = ExtResource("1_65lh6")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(80.8854, 32.6553, 21.4032, 17.0866)
+
+[node name="ShoulderR" type="Node2D" parent="Sprites"]
+position = Vector2(24.5, 4.5)
+rotation = -1.46933
+
+[node name="ArmR" type="Sprite2D" parent="Sprites/ShoulderR"]
+self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
+position = Vector2(8, 4)
+texture = ExtResource("1_65lh6")
+region_enabled = true
+region_rect = Rect2(9.78446, 28.4312, 27.89, 21.6922)
+
+[node name="Elbow" type="Node2D" parent="Sprites/ShoulderR"]
+position = Vector2(15, 9.5)
+
+[node name="LowerArmR" type="Sprite2D" parent="Sprites/ShoulderR/Elbow"]
+self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
+position = Vector2(9.5, -6)
+texture = ExtResource("1_65lh6")
+region_enabled = true
+region_rect = Rect2(94.7345, 3.698, 29.2655, 25.1802)
+
+[node name="HandThingy" type="Node2D" parent="Sprites/ShoulderR/Elbow"]
+position = Vector2(17.5, -17)
+rotation = -0.401426
+
+[node name="HandL" type="Sprite2D" parent="Sprites/ShoulderR/Elbow/HandThingy"]
+self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
+position = Vector2(6.5, -5.5)
+rotation = -0.123975
+texture = ExtResource("1_65lh6")
+region_enabled = true
+region_rect = Rect2(79.9861, 34.274, 22.1226, 16.3671)
+
+[node name="Head" type="Sprite2D" parent="Sprites"]
+self_modulate = Color(0.890196, 0.67451, 0.345098, 1)
+position = Vector2(0, -3.5)
+rotation = 0.0127108
+texture = ExtResource("1_65lh6")
+region_enabled = true
+region_rect = Rect2(7.75584, 1.74842, 20.098, 23.7572)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tykk2")
+}
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0999999, 1.52595e-05)
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+shape = SubResource("RectangleShape2D_1c4hf")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="PunchTimer" type="Timer" parent="."]
+wait_time = 0.45
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("3_s7q58")
+texture_scale = 13.97
+
+[connection signal="timeout" from="PunchTimer" to="." method="_on_punch_timer_timeout"]
