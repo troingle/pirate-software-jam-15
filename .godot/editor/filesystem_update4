@@ -6,3 +6,4 @@ res://scenes/note.tscn
 res://code/human.gd
 res://code/player.gd
 res://scenes/note.gd
+res://scenes/sub_viewport.tscn
