@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcu1vixypdp14"]
+[gd_scene load_steps=9 format=3 uid="uid://dcu1vixypdp14"]
 
 [ext_resource type="Texture2D" uid="uid://f3v471jr8wpp" path="res://art/tilemap.png" id="1_h08i7"]
 [ext_resource type="PackedScene" uid="uid://bcf18ndr1tljt" path="res://scenes/player.tscn" id="2_6kwxv"]
@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://188oqm04d8me" path="res://fonts/SpaceMono-Regular.ttf" id="5_6ngcv"]
 [ext_resource type="PackedScene" uid="uid://ftjhll8o2w8n" path="res://scenes/human.tscn" id="5_baolu"]
 [ext_resource type="PackedScene" uid="uid://tthkcvdd3e2q" path="res://scenes/note.tscn" id="6_m08p3"]
-[ext_resource type="Texture2D" uid="uid://klfb4mm74avm" path="res://art/square.png" id="7_r4gfs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6cc12"]
 texture = ExtResource("1_h08i7")
@@ -204,10 +203,3 @@ autowrap_mode = 3
 position = Vector2(1067, -1405)
 rotation = -0.198118
 content = "\"I regret ever joining this cult. I don't think I'll ever be a free alchemist again.\""
-
-[node name="LifeforceBar" type="Sprite2D" parent="."]
-visible = false
-self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
-position = Vector2(182, 397)
-scale = Vector2(1.67324, 0.399119)
-texture = ExtResource("7_r4gfs")

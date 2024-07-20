@@ -1,0 +1,7 @@
+Timer
+Sprite2D
+ColorRect
+CollisionShape2D
+Area2D
+CanvasLayer
+Node2D

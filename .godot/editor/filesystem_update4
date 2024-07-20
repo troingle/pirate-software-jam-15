@@ -1,0 +1,8 @@
+res://scenes/level_1.tscn
+res://scenes/blood.tscn
+res://scenes/human.tscn
+res://scenes/player.tscn
+res://scenes/note.tscn
+res://code/human.gd
+res://code/player.gd
+res://scenes/note.gd

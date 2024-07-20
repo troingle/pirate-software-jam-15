@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var player = $"../Player"
 @onready var raycast = $RayCast2D
+@onready var hurt_particles = $HurtEffect
 
 @export var speed = 160.0
 @export var detect_range = 500
@@ -36,4 +37,6 @@ func _physics_process(delta):
 func _on_human_punch_timer_timeout():
 	punchHelper += 1
 	if punchHelper % 2 == 0 and raycast.is_colliding():
-		print("Hit player")
+		player.hp -= 0.3
+		player.bar.visible = true
+		player.bar_visibility_timer.start()

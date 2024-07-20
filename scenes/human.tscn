@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ftjhll8o2w8n"]
+[gd_scene load_steps=8 format=3 uid="uid://ftjhll8o2w8n"]
 
 [ext_resource type="Script" path="res://code/human.gd" id="1_dwual"]
 [ext_resource type="Texture2D" uid="uid://qihn7ew4hhev" path="res://art/human_constraints.png" id="1_j3sst"]
+[ext_resource type="Texture2D" uid="uid://cfwx4loop3xh8" path="res://art/small_circle.png" id="3_3ulwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5k4q"]
 size = Vector2(39.0909, 85.4545)
@@ -117,7 +118,7 @@ _data = {
 
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_dwual")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -228,5 +229,23 @@ target_position = Vector2(60, 0)
 [node name="HumanPunchTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="HurtEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("3_3ulwd")
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+color = Color(0.933333, 0, 0.0588235, 1)
 
 [connection signal="timeout" from="HumanPunchTimer" to="." method="_on_human_punch_timer_timeout"]
