@@ -1,0 +1,31 @@
+extends CharacterBody2D
+
+@onready var player = $"../Player"
+
+var throw_speed = 1100.0
+var friction_factor = 0.96
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _physics_process(delta):
+	velocity.x *= friction_factor
+	velocity.y *= friction_factor
+			
+	if velocity.x or velocity.y:
+		if velocity.x > velocity.y:
+			rotation_degrees += velocity.x / 100
+		else:
+			rotation_degrees += velocity.y / 100
+			
+	if player.has_stone:
+		$CollisionShape2D.disabled = true
+	else:
+		$CollisionShape2D.disabled = false
+
+	move_and_slide()
+
+func _on_area_2d_body_entered(body):
+	if body.name == "StoneColl" and !player.has_stone:
+		body.get_parent().golden = true
+		body.get_parent().anim.pause()

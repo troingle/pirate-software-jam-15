@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ftjhll8o2w8n"]
+[gd_scene load_steps=10 format=3 uid="uid://ftjhll8o2w8n"]
 
 [ext_resource type="Script" path="res://code/human.gd" id="1_dwual"]
 [ext_resource type="Texture2D" uid="uid://qihn7ew4hhev" path="res://art/human_constraints.png" id="1_j3sst"]
@@ -116,7 +116,13 @@ _data = {
 "walk": SubResource("Animation_l3o7n")
 }
 
-[node name="Human" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fq6d"]
+size = Vector2(30, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2b3"]
+size = Vector2(30, 54)
+
+[node name="Human" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_dwual")
@@ -227,7 +233,7 @@ autoplay = "walk"
 target_position = Vector2(60, 0)
 
 [node name="HumanPunchTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.15
 autostart = true
 
 [node name="HurtEffect" type="CPUParticles2D" parent="."]
@@ -247,5 +253,22 @@ initial_velocity_max = 300.0
 scale_amount_min = 0.01
 scale_amount_max = 0.05
 color = Color(0.933333, 0, 0.0588235, 1)
+
+[node name="GoldenColl" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoldenColl"]
+position = Vector2(-5, 2.5)
+shape = SubResource("RectangleShape2D_8fq6d")
+disabled = true
+debug_color = Color(0.0941176, 0.596078, 0.709804, 0.419608)
+
+[node name="StoneColl" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoneColl"]
+position = Vector2(-5, 2)
+shape = SubResource("RectangleShape2D_qi2b3")
+debug_color = Color(0.678431, 0.301961, 1, 0.419608)
 
 [connection signal="timeout" from="HumanPunchTimer" to="." method="_on_human_punch_timer_timeout"]

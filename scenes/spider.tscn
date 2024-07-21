@@ -1,0 +1,131 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcnj2lbe0mxr2"]
+
+[ext_resource type="Texture2D" uid="uid://copqmmr6kws66" path="res://art/spider.png" id="1_idjsr"]
+
+[node name="Spider" type="CharacterBody2D"]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(67.4566, 0, 53.3765, 39)
+
+[node name="LegThing" type="Node2D" parent="Sprites"]
+position = Vector2(-20, -7)
+rotation = 0.50076
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/LegThing"]
+position = Vector2(-46, -2)
+rotation = -0.949122
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing/LegThing"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing2" type="Node2D" parent="Sprites"]
+position = Vector2(-15, 5)
+rotation = -0.255984
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing2"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/LegThing2"]
+position = Vector2(-46, -2)
+rotation = -0.77707
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing2/LegThing"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing3" type="Node2D" parent="Sprites"]
+position = Vector2(6, -10)
+rotation = 2.67291
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing3"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/LegThing3"]
+position = Vector2(-46, -2)
+rotation = 0.832632
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing3/LegThing"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing4" type="Node2D" parent="Sprites"]
+position = Vector2(19, 3)
+rotation = 3.14159
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing4"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/LegThing4"]
+position = Vector2(-46, -2)
+rotation = 1.12163
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing4/LegThing"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing5" type="Node2D" parent="Sprites"]
+position = Vector2(17, -3)
+rotation = 2.91721
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing5"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/LegThing5"]
+position = Vector2(-46, -2)
+rotation = 0.908394
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing5/LegThing"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing6" type="Node2D" parent="Sprites"]
+position = Vector2(-16, -2)
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing6"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/LegThing6"]
+position = Vector2(-46, -2)
+rotation = -0.486583
+
+[node name="Leg" type="Sprite2D" parent="Sprites/LegThing6/LegThing"]
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)

@@ -350,6 +350,9 @@ rotation = 3.14159
 scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_1c4hf")
 
+[node name="StonePos" type="Node2D" parent="."]
+position = Vector2(24, -2)
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(100, 0)
 collision_mask = 4
@@ -382,6 +385,10 @@ shadow_enabled = true
 texture = ExtResource("3_s7q58")
 texture_scale = 13.97
 
+[node name="BarVisibilityTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -406,9 +413,23 @@ offset_right = 8177.0
 offset_bottom = 5686.0
 color = Color(0, 0, 0, 0.619608)
 
-[node name="BarVisibilityTimer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="DeathMsg" type="Label" parent="CanvasLayer"]
+visible = false
+offset_top = 1.0
+offset_right = 10108.0
+offset_bottom = 5678.0
+scale = Vector2(0.113972, 0.113972)
+theme_override_fonts/font = ExtResource("4_qldmo")
+theme_override_font_sizes/font_size = 300
+text = "You died
+Press any key to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PickupTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="PunchTimer" to="." method="_on_punch_timer_timeout"]
 [connection signal="timeout" from="BarVisibilityTimer" to="." method="_on_bar_visibility_timer_timeout"]
+[connection signal="timeout" from="PickupTimer" to="." method="_on_pickup_timer_timeout"]
