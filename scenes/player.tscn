@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qihn7ew4hhev" path="res://art/human_constraints.png" id="1_65lh6"]
 [ext_resource type="Script" path="res://code/player.gd" id="1_rtxvx"]
-[ext_resource type="Texture2D" uid="uid://bq3m53wx223er" path="res://art/cirlce.png" id="3_s7q58"]
+[ext_resource type="Texture2D" uid="uid://cdq3kvvopdf4m" path="res://art/light.png" id="3_3w7p0"]
 [ext_resource type="FontFile" uid="uid://188oqm04d8me" path="res://fonts/SpaceMono-Regular.ttf" id="4_qldmo"]
 
 [sub_resource type="Animation" id="Animation_yx4vb"]
@@ -380,10 +380,11 @@ one_shot = true
 position_smoothing_enabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.5
+color = Color(1, 1, 0.776471, 1)
+energy = 0.6
 shadow_enabled = true
-texture = ExtResource("3_s7q58")
-texture_scale = 13.97
+texture = ExtResource("3_3w7p0")
+texture_scale = 2.6
 
 [node name="BarVisibilityTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -422,7 +423,7 @@ scale = Vector2(0.113972, 0.113972)
 theme_override_fonts/font = ExtResource("4_qldmo")
 theme_override_font_sizes/font_size = 300
 text = "You died
-Press Space to restart"
+Press Space or R to restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 

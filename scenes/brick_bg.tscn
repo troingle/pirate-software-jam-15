@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b17egmd3er7y7"]
+
+[ext_resource type="Texture2D" uid="uid://dpris8etuy1sk" path="res://art/bricks.png" id="1_qqwkp"]
+
+[node name="BrickBG" type="Sprite2D"]
+self_modulate = Color(0.243137, 0.243137, 0.243137, 1)
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1085, -1608)
+scale = Vector2(0.581379, 0.581379)
+texture = ExtResource("1_qqwkp")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)

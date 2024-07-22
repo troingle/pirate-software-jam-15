@@ -132,7 +132,7 @@ rotation = 1.5708
 scale = Vector2(1.1, 1.1)
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
-self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+self_modulate = Color(0.231373, 0.243137, 0.243137, 1)
 position = Vector2(0, 5.5)
 texture = ExtResource("1_j3sst")
 region_enabled = true
@@ -143,7 +143,7 @@ position = Vector2(-20, 5.5)
 rotation = 1.91757
 
 [node name="ArmL" type="Sprite2D" parent="Sprites/ShoulderL"]
-self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+self_modulate = Color(0.231373, 0.243137, 0.243137, 1)
 position = Vector2(-8.5, 5)
 texture = ExtResource("1_j3sst")
 flip_h = true
@@ -155,7 +155,7 @@ position = Vector2(-17.7773, 10.3184)
 rotation = -1.30721
 
 [node name="LowerArmL" type="Sprite2D" parent="Sprites/ShoulderL/Elbow"]
-self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+self_modulate = Color(0.231373, 0.243137, 0.243137, 1)
 position = Vector2(-6.01405, -7.42167)
 rotation = 0.141407
 texture = ExtResource("1_j3sst")
@@ -181,7 +181,7 @@ position = Vector2(24.5, 4.5)
 rotation = -1.74137
 
 [node name="ArmR" type="Sprite2D" parent="Sprites/ShoulderR"]
-self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+self_modulate = Color(0.231373, 0.243137, 0.243137, 1)
 position = Vector2(8, 4)
 texture = ExtResource("1_j3sst")
 region_enabled = true
@@ -192,7 +192,7 @@ position = Vector2(15, 9.5)
 rotation = 0.817691
 
 [node name="LowerArmR" type="Sprite2D" parent="Sprites/ShoulderR/Elbow"]
-self_modulate = Color(0.192157, 0.192157, 0.192157, 1)
+self_modulate = Color(0.231373, 0.243137, 0.243137, 1)
 position = Vector2(9.5, -6)
 texture = ExtResource("1_j3sst")
 region_enabled = true

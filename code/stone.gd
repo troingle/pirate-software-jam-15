@@ -26,6 +26,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if body.name == "StoneColl" and !player.has_stone:
+	if body.name == "StoneColl" and !player.has_stone and (body.get_parent().velocity.x != 0 or body.get_parent().velocity.y != 0):
 		body.get_parent().golden = true
 		body.get_parent().anim.pause()
