@@ -422,7 +422,7 @@ scale = Vector2(0.113972, 0.113972)
 theme_override_fonts/font = ExtResource("4_qldmo")
 theme_override_font_sizes/font_size = 300
 text = "You died
-Press any key to restart"
+Press Space to restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 

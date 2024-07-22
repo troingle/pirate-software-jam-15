@@ -18,7 +18,7 @@ func _physics_process(delta):
 		else:
 			rotation_degrees += velocity.y / 100
 			
-	if player.has_stone:
+	if player.has_stone or (velocity.x == 0 and velocity.y == 0):
 		$CollisionShape2D.disabled = true
 	else:
 		$CollisionShape2D.disabled = false

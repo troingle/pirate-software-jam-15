@@ -221,7 +221,6 @@ region_rect = Rect2(2.31145, 0.622263, 11.2158, 16.6211)
 self_modulate = Color(0.301961, 0.317647, 0.529412, 1)
 texture_filter = 1
 position = Vector2(0, -5)
-scale = Vector2(1, 1)
 texture = ExtResource("1_2fgms")
 region_enabled = true
 region_rect = Rect2(0.0142365, 18.5946, 19.3237, 18.2426)
@@ -249,6 +248,14 @@ target_position = Vector2(1300, 0)
 
 [node name="DetectPlayer3" type="RayCast2D" parent="PlayerDetectors"]
 position = Vector2(0, -38)
+target_position = Vector2(1300, 0)
+
+[node name="DetectPlayer4" type="RayCast2D" parent="PlayerDetectors"]
+position = Vector2(0, -19)
+target_position = Vector2(1300, 0)
+
+[node name="DetectPlayer5" type="RayCast2D" parent="PlayerDetectors"]
+position = Vector2(0, 20)
 target_position = Vector2(1300, 0)
 
 [node name="HurtEffect" type="CPUParticles2D" parent="."]

@@ -32,10 +32,12 @@ func _ready():
 	$PlayerDetectors/DetectPlayer.target_position.x = rc_length
 	$PlayerDetectors/DetectPlayer2.target_position.x = rc_length
 	$PlayerDetectors/DetectPlayer3.target_position.x = rc_length
+	$PlayerDetectors/DetectPlayer4.target_position.x = rc_length
+	$PlayerDetectors/DetectPlayer5.target_position.x = rc_length
 
 func _physics_process(delta):
 	if not golden:
-		if ($PlayerDetectors/DetectPlayer.is_colliding() or $PlayerDetectors/DetectPlayer2.is_colliding() or $PlayerDetectors/DetectPlayer3.is_colliding()) and not triggered:
+		if raycasts_collide() and not triggered:
 			if vertical:
 				velocity.y = speed * dir
 			else:
@@ -65,6 +67,9 @@ func _physics_process(delta):
 	
 	if not golden:
 		move_and_slide()
+		
+func raycasts_collide():
+	return $PlayerDetectors/DetectPlayer.is_colliding() or $PlayerDetectors/DetectPlayer2.is_colliding() or $PlayerDetectors/DetectPlayer3.is_colliding() or $PlayerDetectors/DetectPlayer4.is_colliding() or $PlayerDetectors/DetectPlayer5.is_colliding()
 		
 		
 		

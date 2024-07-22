@@ -51,7 +51,8 @@ func _physics_process(delta):
 	velocity.x = move_toward(velocity.x, speed * dir.x, accel)
 	velocity.y = move_toward(velocity.y, speed * dir.y, accel)
 	
-	move_and_slide()
+	if not dead:
+		move_and_slide()
 
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
@@ -79,7 +80,7 @@ func _physics_process(delta):
 	else:
 		note_label.visible = false
 		
-	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("click"):
+	if anything_is_pressed():
 		note_open = false
 		
 	if hp < 0:
@@ -106,8 +107,11 @@ func _physics_process(delta):
 			stone.velocity = Vector2(1, 0).rotated(rotation) * stone.throw_speed
 			
 	if dead:
+		$Sprites.visible = false
+		if has_stone:
+			stone.visible = false
 		$CanvasLayer/DeathMsg.visible = true
-		if Input.is_anything_pressed():
+		if Input.is_action_just_pressed("real_space"):
 			get_tree().reload_current_scene()
 			
 	if strength > 0:
@@ -125,8 +129,10 @@ func _on_punch_timer_timeout():
 			hurt_enemy(raycast3)
 		
 func hurt_enemy(raycast):
-	raycast.get_collider().hurt_particles.emitting = true
-	raycast.get_collider().hp -= 1
+	if not raycast.get_collider().golden:
+		raycast.get_collider().hurt_particles.emitting = true
+		raycast.get_collider().hp -= 1
+		strength = 5.0
 
 func _on_bar_visibility_timer_timeout():
 	bar.visible = false
@@ -136,6 +142,9 @@ func _on_pickup_timer_timeout():
 	
 func show_damage_visually(severe):
 	if severe:
-		strength = 15.0
+		strength = 13.0
 	else:
-		strength = 8.0
+		strength = 7.0
+		
+func anything_is_pressed():
+	return Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("click")
