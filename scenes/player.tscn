@@ -245,6 +245,7 @@ size = Vector2(37.4286, 32)
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 top_level = true
+collision_layer = 17
 collision_mask = 3
 script = ExtResource("1_rtxvx")
 

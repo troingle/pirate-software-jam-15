@@ -72,7 +72,8 @@ script = ExtResource("3_0mpf6")
 [node name="Human2" parent="." instance=ExtResource("3_hp2qq")]
 position = Vector2(-2, -1430)
 rotation = -1.57079
-detect_range = 1000
+detect_range = 400
+hp = 6
 
 [node name="Player" parent="." instance=ExtResource("4_63ta0")]
 position = Vector2(460, 483)

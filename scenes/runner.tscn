@@ -149,7 +149,7 @@ size = Vector2(30, 54)
 
 [node name="Runner" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_tdi3o")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -241,22 +241,27 @@ autoplay = "walk"
 
 [node name="DetectPlayer" type="RayCast2D" parent="PlayerDetectors"]
 target_position = Vector2(1300, 0)
+collision_mask = 16
 
 [node name="DetectPlayer2" type="RayCast2D" parent="PlayerDetectors"]
 position = Vector2(0, 39)
 target_position = Vector2(1300, 0)
+collision_mask = 16
 
 [node name="DetectPlayer3" type="RayCast2D" parent="PlayerDetectors"]
 position = Vector2(0, -38)
 target_position = Vector2(1300, 0)
+collision_mask = 16
 
 [node name="DetectPlayer4" type="RayCast2D" parent="PlayerDetectors"]
 position = Vector2(0, -19)
 target_position = Vector2(1300, 0)
+collision_mask = 16
 
 [node name="DetectPlayer5" type="RayCast2D" parent="PlayerDetectors"]
-position = Vector2(0, 20)
+position = Vector2(0, 19)
 target_position = Vector2(1300, 0)
+collision_mask = 16
 
 [node name="HurtEffect" type="CPUParticles2D" parent="."]
 emitting = false

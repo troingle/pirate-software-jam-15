@@ -10,6 +10,9 @@ var last_anim = "walk"
 var hp = 2.5
 var dead = false
 
+var read = false
+var fading_to_white = false
+
 var has_stone = false
 var can_pick_up = true
 
@@ -80,8 +83,14 @@ func _physics_process(delta):
 	else:
 		note_label.visible = false
 		
-	if anything_is_pressed():
-		note_open = false
+	if note_open:
+		if $"..".name == "7":
+			if anything_is_pressed(true):
+				note_open = false
+				read = true
+		elif anything_is_pressed(false):
+			note_open = false
+			read = true
 		
 	if hp < 0:
 		bar.visible = false
@@ -100,7 +109,7 @@ func _physics_process(delta):
 	if has_stone:
 		stone.global_position = stone_pos.global_position
 		stone.look_at(get_global_mouse_position())
-		if Input.is_action_just_pressed("space"):
+		if Input.is_action_just_pressed("real_space"):
 			has_stone = false
 			can_pick_up = false
 			pickup_timer.start()
@@ -146,5 +155,11 @@ func show_damage_visually(severe):
 	else:
 		strength = 7.0
 		
-func anything_is_pressed():
-	return Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("click")
+func fade_to_white():
+	pass # explosion effect here
+		
+func anything_is_pressed(prevent_backtracking):
+	if prevent_backtracking:
+		return Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_pressed("down") or Input.is_action_just_pressed("click")
+	else:
+		return Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("click")

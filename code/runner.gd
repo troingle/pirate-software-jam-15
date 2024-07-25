@@ -34,10 +34,14 @@ func _ready():
 	$PlayerDetectors/DetectPlayer3.target_position.x = rc_length
 	$PlayerDetectors/DetectPlayer4.target_position.x = rc_length
 	$PlayerDetectors/DetectPlayer5.target_position.x = rc_length
+	
+	if $"..".name == "7":
+		visible = false
 
 func _physics_process(delta):
 	if not golden:
-		if raycasts_collide() and not triggered:
+		if ($"..".name != "7" and raycasts_collide()) or ($"..".name == "7" and player.read):
+			visible = true
 			if vertical:
 				velocity.y = speed * dir
 			else:
@@ -49,12 +53,18 @@ func _physics_process(delta):
 			if global_position.x > start_pos.x + length * dir:
 				queue_free()
 				
-		if $HurtSpot.global_position.distance_to(player.global_position) < 55 and not hit:
+		if $HurtSpot.global_position.distance_to(player.global_position) < 55 and not hit and visible:
 			hit = true
 			player.hp -= 2.4
 			player.bar.visible = true
 			player.bar_visibility_timer.start()
 			player.show_damage_visually(true)
+			
+		if $"..".name == "7" and global_position.y < -740:
+			if not player.fading_to_white:
+				player.fading_to_white = true
+				player.fade_to_white()
+			queue_free()
 				
 	else:
 		golden_coll.disabled = false

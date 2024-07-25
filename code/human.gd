@@ -49,7 +49,7 @@ func _physics_process(delta):
 		
 func _on_human_punch_timer_timeout():
 	punchHelper += 1
-	if punchHelper % 2 == 0 and raycast.is_colliding() and not golden and global_position.distance_to(player.global_position) < 60:
+	if punchHelper % 2 == 0 and raycast.is_colliding() and not golden and not player.dead and global_position.distance_to(player.global_position) < 60:
 		player.hp -= 0.2
 		player.bar.visible = true
 		player.bar_visibility_timer.start()

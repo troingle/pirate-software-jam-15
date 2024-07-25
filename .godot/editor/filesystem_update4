@@ -1,1 +1,14 @@
+res://scenes/7.tscn
+res://scenes/1.tscn
+res://scenes/human.tscn
+res://scenes/player.tscn
+res://scenes/5.tscn
+res://scenes/runner.tscn
+res://scenes/2.tscn
+res://scenes/3.tscn
 res://scenes/6.tscn
+res://code/human.gd
+res://code/player.gd
+res://code/note.gd
+res://scenes/stone.tscn
+res://code/runner.gd
