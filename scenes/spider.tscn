@@ -1,131 +1,330 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcnj2lbe0mxr2"]
+[gd_scene load_steps=7 format=3 uid="uid://bcnj2lbe0mxr2"]
 
 [ext_resource type="Texture2D" uid="uid://copqmmr6kws66" path="res://art/spider.png" id="1_idjsr"]
+[ext_resource type="Script" path="res://code/spider.gd" id="1_vraii"]
+
+[sub_resource type="Animation" id="Animation_qpmbn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/FrontL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.658857]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/FrontR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.76701]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/FrontL/LegThing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.986441]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/FrontR/LegThing:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/BackL:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.534133]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/BackL/LegThing:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.790581]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/BackR:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.54592]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/BackR/LegThing:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0661]
+}
+
+[sub_resource type="Animation" id="Animation_6itox"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/FrontL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.658857, -1.06034, -0.657989]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/FrontR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.76701, 3.92444, 3.76642]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/FrontL/LegThing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.986441, -1.0472, -1.74533, -0.986111]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/FrontR/LegThing:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.1289, 1.56555, 1.12923]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/BackL:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.534133, 1.24344, 0.534133]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/BackL/LegThing:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.790581, 1.10945, 0.790581]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/BackR:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.54592, 2.1247, 2.54592]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/BackR/LegThing:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.001032, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.0661, -1.32053, -1.06663]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7qxr"]
+_data = {
+"RESET": SubResource("Animation_qpmbn"),
+"walk": SubResource("Animation_6itox")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah874"]
+size = Vector2(84, 56)
 
 [node name="Spider" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_vraii")
 
 [node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="BackL" type="Node2D" parent="Sprites"]
+position = Vector2(-20, -7)
+rotation = 0.534133
+
+[node name="Leg" type="Sprite2D" parent="Sprites/BackL"]
+self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/BackL"]
+position = Vector2(-46, -2)
+rotation = 0.790581
+
+[node name="Leg" type="Sprite2D" parent="Sprites/BackL/LegThing"]
+self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="BackR" type="Node2D" parent="Sprites"]
+position = Vector2(6, -10)
+rotation = 2.54592
+
+[node name="Leg" type="Sprite2D" parent="Sprites/BackR"]
+self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/BackR"]
+position = Vector2(-46, -2)
+rotation = -1.0661
+
+[node name="Leg" type="Sprite2D" parent="Sprites/BackR/LegThing"]
+self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="FrontL" type="Node2D" parent="Sprites"]
+position = Vector2(-15, 5)
+rotation = -0.658857
+
+[node name="Leg" type="Sprite2D" parent="Sprites/FrontL"]
+self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/FrontL"]
+position = Vector2(-46, -2)
+rotation = -0.986441
+
+[node name="Leg" type="Sprite2D" parent="Sprites/FrontL/LegThing"]
+self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="FrontR" type="Node2D" parent="Sprites"]
+position = Vector2(19, 3)
+rotation = 3.76701
+
+[node name="Leg" type="Sprite2D" parent="Sprites/FrontR"]
+self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+
+[node name="LegThing" type="Node2D" parent="Sprites/FrontR"]
+position = Vector2(-46, -2)
+
+[node name="Leg" type="Sprite2D" parent="Sprites/FrontR/LegThing"]
+self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+position = Vector2(-23, -1)
+texture = ExtResource("1_idjsr")
+region_enabled = true
+region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
+self_modulate = Color(0.0784314, 0.0784314, 0.0784314, 1)
+position = Vector2(3.8147e-06, 1.90735e-06)
 texture = ExtResource("1_idjsr")
 region_enabled = true
 region_rect = Rect2(67.4566, 0, 53.3765, 39)
 
-[node name="LegThing" type="Node2D" parent="Sprites"]
-position = Vector2(-20, -7)
-rotation = 0.50076
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s7qxr")
+}
+autoplay = "walk"
 
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+[node name="SwitchDirs" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
 
-[node name="LegThing" type="Node2D" parent="Sprites/LegThing"]
-position = Vector2(-46, -2)
-rotation = -0.949122
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_ah874")
 
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing/LegThing"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing2" type="Node2D" parent="Sprites"]
-position = Vector2(-15, 5)
-rotation = -0.255984
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing2"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing" type="Node2D" parent="Sprites/LegThing2"]
-position = Vector2(-46, -2)
-rotation = -0.77707
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing2/LegThing"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing3" type="Node2D" parent="Sprites"]
-position = Vector2(6, -10)
-rotation = 2.67291
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing3"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing" type="Node2D" parent="Sprites/LegThing3"]
-position = Vector2(-46, -2)
-rotation = 0.832632
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing3/LegThing"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing4" type="Node2D" parent="Sprites"]
-position = Vector2(19, 3)
-rotation = 3.14159
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing4"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing" type="Node2D" parent="Sprites/LegThing4"]
-position = Vector2(-46, -2)
-rotation = 1.12163
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing4/LegThing"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing5" type="Node2D" parent="Sprites"]
-position = Vector2(17, -3)
-rotation = 2.91721
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing5"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing" type="Node2D" parent="Sprites/LegThing5"]
-position = Vector2(-46, -2)
-rotation = 0.908394
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing5/LegThing"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing6" type="Node2D" parent="Sprites"]
-position = Vector2(-16, -2)
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing6"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
-
-[node name="LegThing" type="Node2D" parent="Sprites/LegThing6"]
-position = Vector2(-46, -2)
-rotation = -0.486583
-
-[node name="Leg" type="Sprite2D" parent="Sprites/LegThing6/LegThing"]
-position = Vector2(-23, -1)
-texture = ExtResource("1_idjsr")
-region_enabled = true
-region_rect = Rect2(1.69126, 1.66278, 46.7552, 10.5402)
+[connection signal="timeout" from="SwitchDirs" to="." method="_on_switch_dirs_timeout"]

@@ -16,6 +16,12 @@ var fading_to_white = false
 var has_stone = false
 var can_pick_up = true
 
+var locked = false
+var cutscene_finished = false
+var stone_thrown = false
+
+var spin_dir = 1
+
 var note_open = false
 var note_content = ""
 @onready var note_label = $CanvasLayer/Label
@@ -37,6 +43,16 @@ var note_content = ""
 
 @onready var pickup_timer = $PickupTimer
 
+@onready var white_cover_anim = $WhiteCoverAnim
+@onready var remove_block_timer = $RemoveBlock
+
+@onready var spider = $"../Spider"
+@onready var stone2 = $"../Stone2"
+@onready var exit_stopper_coll = $"../ExitStopper/CollisionShape2D"
+
+@onready var boss_target_parent = $"../TargetParent"
+@onready var boss_target = $"../TargetParent/BossTarget"
+
 var shakeFade = 10.0
 
 var rng = RandomNumberGenerator.new()
@@ -49,8 +65,14 @@ func _ready():
 
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
+	if $"..".name == "8":
+		boss_target_parent.global_position = global_position
+		boss_target_parent.global_rotation += 0.05 * spin_dir
 	
-	dir = Input.get_vector("left", "right", "up", "down")
+	if not locked:
+		dir = Input.get_vector("left", "right", "up", "down")
+	else:
+		dir = Input.get_vector("", "", "", "")
 	velocity.x = move_toward(velocity.x, speed * dir.x, accel)
 	velocity.y = move_toward(velocity.y, speed * dir.y, accel)
 	
@@ -109,7 +131,7 @@ func _physics_process(delta):
 	if has_stone:
 		stone.global_position = stone_pos.global_position
 		stone.look_at(get_global_mouse_position())
-		if Input.is_action_just_pressed("real_space"):
+		if Input.is_action_just_pressed("real_space") and not locked and ($"..".name != "8" or cutscene_finished):
 			has_stone = false
 			can_pick_up = false
 			pickup_timer.start()
@@ -123,11 +145,20 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("real_space"):
 			get_tree().reload_current_scene()
 			
+	if $"..".name == "8":
+		if global_position.y < -837 and not cutscene_finished:
+			locked = true
+			exit_stopper_coll.disabled = false
+			spider.velocity.y = 50
+			if spider.global_position.y >= -1060 and not stone_thrown:
+				stone_thrown = true
+				stone2.velocity.y = 1700
+				
+		
 	if strength > 0:
 		strength = lerpf(strength, 0, shakeFade * delta)
 		camera.offset = Vector2(rng.randf_range(-strength, strength), rng.randf_range(-strength, strength))
 		
-
 func _on_punch_timer_timeout():
 	if not has_stone:
 		if raycast.is_colliding():
@@ -155,11 +186,14 @@ func show_damage_visually(severe):
 	else:
 		strength = 7.0
 		
-func fade_to_white():
-	pass # explosion effect here
-		
 func anything_is_pressed(prevent_backtracking):
 	if prevent_backtracking:
 		return Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_pressed("down") or Input.is_action_just_pressed("click")
 	else:
 		return Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down") or Input.is_action_just_pressed("click")
+
+func _on_remove_block_timeout():
+	$"../BackWall".queue_free()
+
+func _on_spin_dir_change_timeout():
+	spin_dir *= -1

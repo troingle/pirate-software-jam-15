@@ -37,6 +37,9 @@ func _ready():
 	
 	if $"..".name == "7":
 		visible = false
+		$CollisionShape2D.disabled = true
+		$GoldenColl/CollisionShape2D.disabled = true
+		$StoneColl/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
 	if not golden:
@@ -55,7 +58,10 @@ func _physics_process(delta):
 				
 		if $HurtSpot.global_position.distance_to(player.global_position) < 55 and not hit and visible:
 			hit = true
-			player.hp -= 2.4
+			if $"..".name == "7":
+				player.hp -= 5
+			else:
+				player.hp -= 2.4
 			player.bar.visible = true
 			player.bar_visibility_timer.start()
 			player.show_damage_visually(true)
@@ -63,7 +69,8 @@ func _physics_process(delta):
 		if $"..".name == "7" and global_position.y < -740:
 			if not player.fading_to_white:
 				player.fading_to_white = true
-				player.fade_to_white()
+				player.white_cover_anim.play("fade")
+				player.remove_block_timer.start()
 			queue_free()
 				
 	else:

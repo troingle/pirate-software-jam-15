@@ -1,9 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcf18ndr1tljt"]
+[gd_scene load_steps=11 format=3 uid="uid://8wpmghy17jof"]
 
-[ext_resource type="Texture2D" uid="uid://qihn7ew4hhev" path="res://art/human_constraints.png" id="1_65lh6"]
-[ext_resource type="Script" path="res://code/player.gd" id="1_rtxvx"]
-[ext_resource type="Texture2D" uid="uid://cdq3kvvopdf4m" path="res://art/light.png" id="3_3w7p0"]
-[ext_resource type="FontFile" uid="uid://188oqm04d8me" path="res://fonts/SpaceMono-Regular.ttf" id="4_qldmo"]
+[ext_resource type="Script" path="res://code/boss.gd" id="1_2unft"]
+[ext_resource type="Texture2D" uid="uid://qihn7ew4hhev" path="res://art/human_constraints.png" id="2_7yb3w"]
+[ext_resource type="Texture2D" uid="uid://cfwx4loop3xh8" path="res://art/small_circle.png" id="3_dfpte"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5k4q"]
+size = Vector2(39.0909, 69.0909)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2b3"]
+size = Vector2(30, 54)
 
 [sub_resource type="Animation" id="Animation_yx4vb"]
 length = 0.001
@@ -318,51 +323,50 @@ _data = {
 "walk": SubResource("Animation_pxobr")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1c4hf"]
-size = Vector2(37.4286, 32)
+[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 5
+collision_mask = 6
+script = ExtResource("1_2unft")
 
-[sub_resource type="Animation" id="Animation_0cmbc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/WhiteCover:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 1.66893e-06)
+rotation = 3.14159
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_x5k4q")
 
-[sub_resource type="Animation" id="Animation_bi2s6"]
-resource_name = "fade"
-length = 2.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/WhiteCover:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(75, 0)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vljq"]
-_data = {
-"RESET": SubResource("Animation_0cmbc"),
-"fade": SubResource("Animation_bi2s6")
-}
+[node name="HumanPunchTimer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
 
-[node name="Player" type="CharacterBody2D" groups=["players"]]
-top_level = true
-collision_layer = 17
-collision_mask = 3
-script = ExtResource("1_rtxvx")
+[node name="HurtEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("3_dfpte")
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+color = Color(0.933333, 0, 0.0588235, 1)
+
+[node name="StoneColl" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoneColl"]
+position = Vector2(-5, 2)
+shape = SubResource("RectangleShape2D_qi2b3")
+debug_color = Color(0.678431, 0.301961, 1, 0.419608)
 
 [node name="Sprites" type="Node2D" parent="."]
 rotation = 1.5708
@@ -371,7 +375,7 @@ scale = Vector2(0.7, 0.7)
 [node name="Body" type="Sprite2D" parent="Sprites"]
 self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
 position = Vector2(0, 5.5)
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 region_enabled = true
 region_rect = Rect2(36.82, 3.15843, 52.8785, 30.7558)
 
@@ -382,7 +386,7 @@ rotation = 1.1315
 [node name="ArmL" type="Sprite2D" parent="Sprites/ShoulderL"]
 self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
 position = Vector2(-8.5, 5)
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(9.66134, 27.4394, 28.058, 22.8421)
@@ -395,7 +399,7 @@ rotation = -0.060031
 self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
 position = Vector2(-6.01405, -7.42167)
 rotation = 0.141407
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(95.6338, 2.07927, 26.0795, 26.0795)
@@ -408,7 +412,7 @@ rotation = 0.042863
 self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
 position = Vector2(1.86939, -6.22538)
 rotation = 1.00011
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(80.8854, 32.6553, 21.4032, 17.0866)
@@ -420,7 +424,7 @@ rotation = -1.46933
 [node name="ArmR" type="Sprite2D" parent="Sprites/ShoulderR"]
 self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
 position = Vector2(8, 4)
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 region_enabled = true
 region_rect = Rect2(9.78446, 28.4312, 27.89, 21.6922)
 
@@ -430,7 +434,7 @@ position = Vector2(15, 9.5)
 [node name="LowerArmR" type="Sprite2D" parent="Sprites/ShoulderR/Elbow"]
 self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
 position = Vector2(9.5, -6)
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 region_enabled = true
 region_rect = Rect2(94.7345, 3.698, 29.2655, 25.1802)
 
@@ -442,7 +446,7 @@ rotation = -0.401426
 self_modulate = Color(0.945098, 0.760784, 0.490196, 1)
 position = Vector2(6.5, -5.5)
 rotation = -0.123975
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 region_enabled = true
 region_rect = Rect2(79.9861, 34.274, 22.1226, 16.3671)
 
@@ -450,7 +454,7 @@ region_rect = Rect2(79.9861, 34.274, 22.1226, 16.3671)
 self_modulate = Color(0.890196, 0.67451, 0.345098, 1)
 position = Vector2(0, -3.5)
 rotation = 0.0127108
-texture = ExtResource("1_65lh6")
+texture = ExtResource("2_7yb3w")
 region_enabled = true
 region_rect = Rect2(7.75584, 1.74842, 20.098, 23.7572)
 
@@ -458,117 +462,6 @@ region_rect = Rect2(7.75584, 1.74842, 20.098, 23.7572)
 libraries = {
 "": SubResource("AnimationLibrary_tykk2")
 }
-autoplay = "walk"
+autoplay = "boss_punch"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.0999999, 1.52595e-05)
-rotation = 3.14159
-scale = Vector2(0.7, 0.7)
-shape = SubResource("RectangleShape2D_1c4hf")
-
-[node name="StonePos" type="Node2D" parent="."]
-position = Vector2(24, -2)
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(100, 0)
-collision_mask = 4
-collide_with_areas = true
-
-[node name="RayCast2D2" type="RayCast2D" parent="."]
-position = Vector2(0, 15)
-rotation = 0.15708
-target_position = Vector2(100, 0)
-collision_mask = 4
-collide_with_areas = true
-
-[node name="RayCast2D3" type="RayCast2D" parent="."]
-position = Vector2(0, -15)
-rotation = -0.15708
-target_position = Vector2(100, 0)
-collision_mask = 4
-collide_with_areas = true
-
-[node name="PunchTimer" type="Timer" parent="."]
-wait_time = 0.45
-one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(1, 1, 0.776471, 1)
-energy = 0.6
-shadow_enabled = true
-texture = ExtResource("3_3w7p0")
-texture_scale = 2.6
-
-[node name="BarVisibilityTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
-offset_left = 220.0
-offset_right = 6520.0
-offset_bottom = 5686.0
-scale = Vector2(0.113972, 0.113972)
-theme_override_fonts/font = ExtResource("4_qldmo")
-theme_override_font_sizes/font_size = 190
-text = "Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor "
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Label"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -1913.0
-offset_top = 9.0
-offset_right = 8177.0
-offset_bottom = 5686.0
-color = Color(0, 0, 0, 0.619608)
-
-[node name="DeathMsg" type="Label" parent="CanvasLayer"]
-visible = false
-offset_top = 1.0
-offset_right = 10108.0
-offset_bottom = 5678.0
-scale = Vector2(0.113972, 0.113972)
-theme_override_fonts/font = ExtResource("4_qldmo")
-theme_override_font_sizes/font_size = 300
-text = "You died
-Press Space or R to restart"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="WhiteCover" type="ColorRect" parent="CanvasLayer"]
-offset_left = -17.0
-offset_top = -29.0
-offset_right = 1184.0
-offset_bottom = 694.0
-color = Color(1, 1, 1, 0)
-
-[node name="PickupTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="WhiteCoverAnim" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5vljq")
-}
-
-[node name="RemoveBlock" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
-[node name="SpinDirChange" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true
-
-[connection signal="timeout" from="PunchTimer" to="." method="_on_punch_timer_timeout"]
-[connection signal="timeout" from="BarVisibilityTimer" to="." method="_on_bar_visibility_timer_timeout"]
-[connection signal="timeout" from="PickupTimer" to="." method="_on_pickup_timer_timeout"]
-[connection signal="timeout" from="RemoveBlock" to="." method="_on_remove_block_timeout"]
-[connection signal="timeout" from="SpinDirChange" to="." method="_on_spin_dir_change_timeout"]
+[connection signal="timeout" from="HumanPunchTimer" to="." method="_on_human_punch_timer_timeout"]
