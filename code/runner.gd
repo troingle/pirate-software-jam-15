@@ -63,6 +63,7 @@ func _physics_process(delta):
 			else:
 				player.hp -= 2.4
 			player.bar.visible = true
+			player.runner_hit_sfx.play()
 			player.bar_visibility_timer.start()
 			player.show_damage_visually(true)
 			
@@ -71,6 +72,7 @@ func _physics_process(delta):
 				player.fading_to_white = true
 				player.white_cover_anim.play("fade")
 				player.remove_block_timer.start()
+				player.explode_sfx.play()
 			queue_free()
 				
 	else:

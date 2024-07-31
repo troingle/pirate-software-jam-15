@@ -101,7 +101,7 @@ autowrap_mode = 3
 position = Vector2(2057, 864)
 rotation = -0.228495
 content = "\"These secret passageways don't seem to be very secret, I always accidentally turn right from the wrong spot and end up here.\"   "
-date = "10th of May, 1932"
+date = "10th of May, 1532"
 
 [node name="LifeforceBar" type="Sprite2D" parent="."]
 visible = false

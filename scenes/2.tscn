@@ -106,7 +106,7 @@ scale = Vector2(0.113972, 0.113972)
 theme_override_fonts/font = ExtResource("5_54t7n")
 theme_override_font_sizes/font_size = 185
 text = "Walk over the Philosopher's Stone to pick it up
-Space/left mouse button to throw it"
+Space to throw it"
 horizontal_alignment = 1
 autowrap_mode = 3
 

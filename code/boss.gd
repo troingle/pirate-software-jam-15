@@ -5,9 +5,9 @@ extends CharacterBody2D
 @onready var hurt_particles = $HurtEffect
 @onready var anim = $AnimationPlayer
 
-var speed = 300.0
+var speed = 236.0
 
-var hp = 18
+var hp = 25
 var golden = false
 
 var bloodObj = preload("res://scenes/blood.tscn")
@@ -28,14 +28,17 @@ func _physics_process(delta):
 			$"..".add_child(blood)
 			blood.global_position = global_position
 			blood.emitting = true
+			player.boss_dead = true
+			$"../BossBar".queue_free()
 			queue_free()
 	
-	bar.scale.x = hp * 1.2
+	bar.scale.x = hp * 0.92
 	bar.global_position = Vector2(global_position.x - (bar.scale.x / 2), global_position.y - 50)
 	
 func _on_human_punch_timer_timeout():
 	if raycast.is_colliding() and not player.dead:
-		player.hp -= 0.13
+		player.hp -= 0.1
+		player.play_hurt_sfx()
 		player.bar.visible = true
 		player.bar_visibility_timer.start()
 		player.show_damage_visually(false)

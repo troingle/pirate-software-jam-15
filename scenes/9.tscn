@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=3 uid="uid://ce40keti3ej61"]
+
+[ext_resource type="Script" path="res://code/ending.gd" id="1_a80od"]
+[ext_resource type="FontFile" uid="uid://188oqm04d8me" path="res://fonts/SpaceMono-Regular.ttf" id="1_pp43i"]
+[ext_resource type="AudioStream" uid="uid://c04xsg4b7wucc" path="res://audio/end_sound.wav" id="3_pvtwv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukb8o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hwq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6aeom"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oebkj"]
+
+[sub_resource type="Animation" id="Animation_0665c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a2c54"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xk2ju"]
+_data = {
+"RESET": SubResource("Animation_0665c"),
+"fade_in": SubResource("Animation_a2c54")
+}
+
+[node name="9" type="Node2D"]
+script = ExtResource("1_a80od")
+
+[node name="BG" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -4.0
+offset_right = 1164.0
+offset_bottom = 658.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 209.0
+offset_top = 39.0
+offset_right = 6376.0
+offset_bottom = 4022.0
+scale = Vector2(0.118865, 0.118865)
+theme_override_fonts/font = ExtResource("1_pp43i")
+theme_override_font_sizes/font_size = 210
+text = "And so the lone homunculus proceeded to be the first one of its kind to escape its creator. 
+
+Due to the gold statues, the cult quickly noticed the Stone had been created and stolen from them. This led to accusations and eventually the cult being disbanded.
+
+Thank you for playing!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="MenuButton" parent="."]
+offset_left = -1.0
+offset_top = 466.0
+offset_right = 10317.0
+offset_bottom = 919.0
+scale = Vector2(0.111648, 0.111648)
+theme_override_colors/font_hover_color = Color(0.678431, 0.678431, 0.678431, 1)
+theme_override_fonts/font = ExtResource("1_pp43i")
+theme_override_font_sizes/font_size = 210
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ukb8o")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5hwq8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6aeom")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oebkj")
+text = "Back to main menu"
+
+[node name="Cover" type="ColorRect" parent="."]
+visible = false
+offset_left = 201.0
+offset_top = 44.0
+offset_right = 1026.0
+offset_bottom = 548.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xk2ju")
+}
+autoplay = "fade_in"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pvtwv")
+autoplay = true
+
+[connection signal="pressed" from="Label2" to="." method="_on_label_2_pressed"]

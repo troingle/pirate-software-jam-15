@@ -30,10 +30,17 @@ func _on_area_2d_body_entered(body):
 		if body.name == "StoneColl" and !player.has_stone and (velocity.x != 0 or velocity.y != 0) and body.get_parent().name != "Boss":
 			body.get_parent().golden = true
 			body.get_parent().anim.pause()
+			$GoldClink.play()
+		elif body.get_parent().name == "Boss":
+			player.show_damage_visually(false)
+			body.get_parent().hp -= 2
+			$GoldClink.play()
+			body.get_parent().hurt_particles.emitting = true
 	else:
 		body.golden = true
 		player.locked = false
 		player.cutscene_finished = true
 		$"../Boss".active = true
+		$"../Player/BossMusic".play()
 		
 		queue_free()

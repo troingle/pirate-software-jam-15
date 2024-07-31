@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr5aa11xbk5t4"]
+[gd_scene load_steps=6 format=3 uid="uid://dr5aa11xbk5t4"]
 
 [ext_resource type="Script" path="res://code/stone.gd" id="1_h3ysh"]
 [ext_resource type="Texture2D" uid="uid://2vaa73ovqqxx" path="res://art/stone.png" id="1_o8euc"]
+[ext_resource type="AudioStream" uid="uid://r5kpgi1u8ajl" path="res://audio/turn_to_gold.wav" id="3_iijdu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sirn3"]
 radius = 12.0416
@@ -29,5 +30,10 @@ collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6yann")
+
+[node name="GoldClink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iijdu")
+volume_db = 5.0
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

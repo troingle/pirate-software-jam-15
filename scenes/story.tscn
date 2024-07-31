@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dviehbb3nbpcb"]
+
+[ext_resource type="FontFile" uid="uid://188oqm04d8me" path="res://fonts/SpaceMono-Regular.ttf" id="1_80xc3"]
+[ext_resource type="Script" path="res://code/story.gd" id="1_p74lu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12sc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0r1si"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_undtf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4i1p"]
+
+[node name="Story" type="Node2D"]
+script = ExtResource("1_p74lu")
+
+[node name="BG" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -4.0
+offset_right = 1164.0
+offset_bottom = 658.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 209.0
+offset_top = 39.0
+offset_right = 6376.0
+offset_bottom = 4022.0
+scale = Vector2(0.118865, 0.118865)
+theme_override_fonts/font = ExtResource("1_80xc3")
+theme_override_font_sizes/font_size = 210
+text = "Homunculi were small artificial human beings sixteenth-century alchemists tried to grow from various materials.
+
+This feat was never achieved by an alchemist.
+
+…or was it?
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="MenuButton" parent="."]
+offset_left = -1.0
+offset_top = 441.0
+offset_right = 10317.0
+offset_bottom = 894.0
+scale = Vector2(0.111648, 0.111648)
+theme_override_colors/font_hover_color = Color(0.678431, 0.678431, 0.678431, 1)
+theme_override_fonts/font = ExtResource("1_80xc3")
+theme_override_font_sizes/font_size = 210
+theme_override_styles/normal = SubResource("StyleBoxEmpty_12sc5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0r1si")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_undtf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d4i1p")
+text = "Continue"
+
+[connection signal="pressed" from="Label2" to="." method="_on_label_2_pressed"]

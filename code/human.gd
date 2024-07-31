@@ -52,5 +52,6 @@ func _on_human_punch_timer_timeout():
 	if punchHelper % 2 == 0 and raycast.is_colliding() and not golden and not player.dead and global_position.distance_to(player.global_position) < 60:
 		player.hp -= 0.2
 		player.bar.visible = true
+		player.play_hurt_sfx()
 		player.bar_visibility_timer.start()
 		player.show_damage_visually(false)
